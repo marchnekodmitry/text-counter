@@ -42,5 +42,5 @@ export const getTime = (count, language, modifier = 1) => {
 }
 
 export const transformDate = (date) => {
-  return `${date.toLocaleDateString()} в ${date.getHours()}:${date.getMinutes()}`
+  return `${date.toLocaleDateString()} в ${date.getHours()}:${`${date.getMinutes()}`.padStart(2, '0')}`
 }
