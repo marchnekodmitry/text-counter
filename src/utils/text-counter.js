@@ -27,9 +27,12 @@ export const getTime = (count, language, modifier = 1) => {
       endTime.setDate(endTime.getDate() + 1)
       continue
     }
-    const hoursLeft = day.end - endTime.getHours() - (endTime.getMinutes() === 0 ? 0 : 1)
+    let hoursLeft = day.end - endTime.getHours() - (endTime.getMinutes() === 0 ? 0 : 1)
+    if (endTime.getHours() < day.start && endTime.getHours() >= day.end) {
+      hoursLeft = 0
+    }
     if (workHours > hoursLeft) {
-      if (endTime.getHours() > day.start) {
+      if (endTime.getHours() >= day.start) {
         if (endTime.getHours() < day.end) {
           workHours = workHours - (day.end - endTime.getHours())
         }
