@@ -45,7 +45,7 @@ export const TextCounter = () => {
         <button onClick={() => {
           fileRef.current.value = null
           setCharactersCount(0)
-          setModifier(0)
+          setModifier(1)
           setIsFilePicked(false)
         }}>Try again</button> :
         null
