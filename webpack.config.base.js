@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+    mode: 'none',
     entry: './src/index.jsx',
     output: {
         path: path.join(__dirname, 'dist'),
@@ -10,7 +11,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx$/,
+                test: /\.jsx$|\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules|server/
             }
