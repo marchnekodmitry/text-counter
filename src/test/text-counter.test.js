@@ -13,9 +13,12 @@ describe('getTime', () => {
             let startTime = new Date((Date.now() + (new Date()).getTimezoneOffset() * millisecondsInMinute + 120 * millisecondsInMinute))
             const endTime = getTime(count, language, modifier)
 
-            if (startTime.getHours() >= day.end || startTime.getHours() < day.start) {
+            if (startTime.getHours() >= day.end) {
                 startTime.setHours(day.start)
                 startTime.setDate(startTime.getDate() + 1)
+            }
+            if (startTime.getHours() < day.start) {
+                startTime.setHours(day.start)
             }
 
             let workHours = 0
