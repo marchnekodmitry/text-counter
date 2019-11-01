@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { getPrice, getTime, transformDate } from '../../utils/text-counter'
+import { getPrice, getDateOfCompletion, transformDate } from '../../utils/text-counter'
 
 export const TextCounter = () => {
   const [charactersCount, setCharactersCount] = useState(0)
@@ -26,8 +26,8 @@ export const TextCounter = () => {
     .catch((err) => console.error(err))
   }
 
-  const price = getPrice(charactersCount, language, modifier);
-  const time = transformDate(getTime(charactersCount, language, modifier))
+  const price = getPrice({ count: charactersCount, language, modifier });
+  const date = transformDate(getDateOfCompletion(charactersCount, language, modifier))
   const shouldCalculate = charactersCount !== 0 && language.length !== 0
 
   return (
@@ -51,7 +51,7 @@ export const TextCounter = () => {
         null
       }
       <p>Цена: { shouldCalculate ? price : 0}</p>
-      <p>{ shouldCalculate ? `Срок выполнения: ${time}` : null }</p>
+      <p>{ shouldCalculate ? `Срок выполнения: ${date}` : null }</p>
       <fieldset onChange={(e) => setLanguage(e.target.value)}>
         <label>
           <input type="radio" name="language" value="ru"/>
