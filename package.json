@@ -11,7 +11,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "test": "mocha-webpack --webpack-config webpack.config.dev.js src/test/**/*.test.js",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "test:jest": "jest src/jest/text-counter.test.js"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "chai-datetime": "^1.5.0",
     "gh-pages": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
     "mocha": "^6.2.2",
     "mocha-loader": "^3.0.0",
     "mocha-webpack": "^2.0.0-beta.0",
